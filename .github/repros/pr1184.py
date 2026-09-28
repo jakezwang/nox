@@ -16,7 +16,7 @@ cases = [
 report = {'platform': platform.platform(), 'python': sys.version, 'tox': importlib.metadata.version('tox'), 'cases': []}
 for kind in ('ini', 'toml', 'pyproject'):
     for name, command, expected in cases:
-        with tempfile.TemporaryDirectory() as tmp:
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as tmp:
             directory = Path(tmp)
             if kind == 'ini':
                 filename = 'tox.ini'
